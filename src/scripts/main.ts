@@ -5,20 +5,33 @@ const canvas = document.querySelector('#background') as HTMLCanvasElement;
 const background = new Board(canvas);
 
 let squaresOnBoard: Square[] = [];
+let lastTime: number = 0;
+const frameInterval = 50;
 
-// function animate() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height); // Очищаем канвас
 
-//     // Устанавливаем цвет на основе значения hue
-//     ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-//     ctx.fillRect(x, y, squareSize, squareSize); // Рисуем квадрат
+requestAnimationFrame(animateSquares);
 
-//     hue = (hue + 1) % 360; // Увеличиваем hue и сбрасываем его после 360
+function animateSquares(timestamp: number) {
+    if (!lastTime) {
+        lastTime = timestamp;
+    }
 
-//     requestAnimationFrame(animate); // Запрашиваем следующий кадр анимации
-// }
+    const elapsed = timestamp - lastTime;
 
-// animate(); // Запускаем анимацию
+    if (elapsed > frameInterval) {
+        background.clearBoard()
+
+        for (let square of squaresOnBoard) {
+            if (square.isAnimate) {
+                square.changeColor();
+            }
+            background.drawFillSquare(square);
+        }
+        lastTime = timestamp;
+    }
+    requestAnimationFrame(animateSquares);
+}
+
 
 const resizeBackground = () => {
     background.canvas.width = window.innerWidth;
@@ -31,7 +44,7 @@ const resizeBackground = () => {
     const squareSize = 30;
 
     const rows = Math.ceil(background.height / squareSize);
-    const verticalGapSummary =background.width % squareSize;
+    const verticalGapSummary = background.width % squareSize;
     const verticalGap = (verticalGapSummary / rows) / 2;
 
     const columns = Math.ceil(background.width / squareSize);
@@ -44,7 +57,6 @@ const resizeBackground = () => {
             const y = row * (squareSize + 5);
             const square = new Square(x, y, squareSize, verticalGap, horizontalGap);
             squaresOnBoard.push(square);
-            background.drawFillSquare(square)
         }
     }
 }

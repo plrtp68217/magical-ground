@@ -1,12 +1,25 @@
+interface Hsl {
+    hue: number;
+    saturation: number;
+    lightness: number;
+}
+
 export class Square {
     x: number;
     y: number;
     size: number;
     verticalGap: number;
     horizontalGap: number;
-    color: string;
-    colors: string[] = ['#a749eb', '#9e2fed', '#691da1', '#6006a1'];
-    isAnimate: boolean;
+    colorShift: number = 30;
+    colorDirection: -1 | 1 = -1;
+    hsl: Hsl;
+    hslList: Hsl[] = [
+        {hue: 280, saturation: 100, lightness: 79},
+        {hue: 280, saturation: 100, lightness: 73},
+        {hue: 280, saturation: 100, lightness: 69},
+        {hue: 280, saturation: 100, lightness: 63},
+    ];
+    isAnimate: boolean = Math.random() <= 0.2 ? true : false;
 
     constructor(x: number, y: number, size: number, verticalGap: number, horizontalGap: number) {
         this.x = x;
@@ -14,14 +27,31 @@ export class Square {
         this.size = size;
         this.verticalGap = verticalGap;
         this.horizontalGap = horizontalGap;
-        this.color = this.getColor();
-        this.isAnimate = Math.random() > 0.5 ? true : false;
+        this.hsl = this.getHsl();
     }
 
-    getColor(): string {
-        const colorsLen: number = this.colors.length;
-        const colorIndex: number = Math.floor(Math.random() * colorsLen);
-        const color: string = this.colors[colorIndex];
+    get color(): string {
+        const color: string = `hsl(${this.hsl.hue}, ${this.hsl.saturation}%, ${this.hsl.lightness}%)`;
         return color;
     }
+
+    changeColor() {
+        this.hsl.saturation += this.colorDirection;
+        this.hsl.lightness += this.colorDirection;
+
+        if (this.hsl.saturation === 70) {
+            this.colorDirection = 1;
+        }
+        else if (this.hsl.saturation === 100) {
+            this.colorDirection = -1;
+        }
+    }
+
+    getHsl() {
+        const hslListLen: number = this.hslList.length;
+        const hslIndex: number = Math.floor(Math.random() * hslListLen);
+        const hsl = this.hslList[hslIndex];
+        return hsl;
+    }
+
 }
