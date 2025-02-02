@@ -10,8 +10,8 @@ export class Square {
     size: number;
     verticalGap: number;
     horizontalGap: number;
-    colorShift: number = 10;
-    colorDirection: -1 | 1 = -1;
+    hslShift: number = 10;
+    hslDirection: -1 | 1 = -1;
     hsl: Hsl;
     hslList: Hsl[] = [
         {hue: 280, saturation: 100, lightness: 69},
@@ -37,15 +37,15 @@ export class Square {
         return color;
     }
 
-    changeColor() {
-        this.hsl.saturation += this.colorDirection;
-        this.hsl.lightness += this.colorDirection;
+    changeHsl() {
+        this.hsl.saturation += this.hslDirection;
+        this.hsl.lightness += this.hslDirection;
 
-        if (this.hsl.saturation === this.hslList[this.hslIndex].saturation - this.colorShift) {
-            this.colorDirection = 1;
+        if (this.hsl.saturation === this.hslList[this.hslIndex].saturation - this.hslShift) {
+            this.hslDirection = 1;
         }
         else if (this.hsl.saturation === this.hslList[this.hslIndex].saturation) {
-            this.colorDirection = -1;
+            this.hslDirection = -1;
             this.isAnimate = false;
         }
     }

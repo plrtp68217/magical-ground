@@ -23,7 +23,7 @@ function animateSquares(timestamp: number) {
 
         for (let square of squaresOnBoard) {
             if (square.isAnimate) {
-                square.changeColor();
+                square.changeHsl();
             }
             else {
                 square.isAnimate = Math.random() <= 0.1 ? true : false;
