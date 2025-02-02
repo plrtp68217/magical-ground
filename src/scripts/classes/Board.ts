@@ -13,9 +13,23 @@ export class Board {
         this.height = this.canvas.height;
     }
 
-    drawSquare(square: Square): void {
+    drawStrokeSquare(square: Square): void {
         this.context.strokeStyle = square.color;
         this.context.lineWidth = 2;
         this.context.strokeRect(square.x, square.y, square.size, square.size);
+    }
+
+    drawFillSquare(square: Square): void {
+        this.context.fillStyle = square.color;
+        this.context.fillRect(square.x, square.y, square.size, square.size);
+    }
+
+    clearBoard() {
+        this.context.clearRect(0, 0, this.width, this.height);
+    }
+
+    updateBoardSize() {
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
     }
 }

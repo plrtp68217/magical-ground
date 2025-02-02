@@ -6,6 +6,7 @@ export class Square {
     horizontalGap: number;
     color: string;
     colors: string[] = ['#a749eb', '#9e2fed', '#691da1', '#6006a1'];
+    isAnimate: boolean;
 
     constructor(x: number, y: number, size: number, verticalGap: number, horizontalGap: number) {
         this.x = x;
@@ -14,6 +15,7 @@ export class Square {
         this.verticalGap = verticalGap;
         this.horizontalGap = horizontalGap;
         this.color = this.getColor();
+        this.isAnimate = Math.random() > 0.5 ? true : false;
     }
 
     getColor(): string {
