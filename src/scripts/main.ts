@@ -47,18 +47,13 @@ const resizeBackground = () => {
     const squareSize = 30;
 
     const rows = Math.ceil(background.height / squareSize);
-    const verticalGapSummary = background.width % squareSize;
-    const verticalGap = (verticalGapSummary / rows) / 2;
-
     const columns = Math.ceil(background.width / squareSize);
-    const horizontalGapSummary = background.height % squareSize;
-    const horizontalGap = (horizontalGapSummary / rows) / 2;
 
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < columns; col++) {
             const x = col * (squareSize + 5);
             const y = row * (squareSize + 5);
-            const square = new Square(x, y, squareSize, verticalGap, horizontalGap);
+            const square = new Square(x, y, squareSize);
             squaresOnBoard.push(square);
         }
     }

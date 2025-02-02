@@ -8,8 +8,6 @@ export class Square {
     x: number;
     y: number;
     size: number;
-    verticalGap: number;
-    horizontalGap: number;
     hslShift: number = 10;
     hslDirection: -1 | 1 = -1;
     hsl: Hsl;
@@ -22,12 +20,10 @@ export class Square {
     hslIndex: number;
     isAnimate: boolean = Math.random() <= 0.1 ? true : false;
 
-    constructor(x: number, y: number, size: number, verticalGap: number, horizontalGap: number) {
+    constructor(x: number, y: number, size: number) {
         this.x = x;
         this.y = y;
         this.size = size;
-        this.verticalGap = verticalGap;
-        this.horizontalGap = horizontalGap;
         this.hslIndex = this.getHslIndex();
         this.hsl = {...this.hslList[this.hslIndex]};
     }
