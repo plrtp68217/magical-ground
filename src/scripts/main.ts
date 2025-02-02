@@ -25,6 +25,9 @@ function animateSquares(timestamp: number) {
             if (square.isAnimate) {
                 square.changeColor();
             }
+            else {
+                square.isAnimate = Math.random() <= 0.1 ? true : false;
+            }
             background.drawFillSquare(square);
         }
         lastTime = timestamp;
