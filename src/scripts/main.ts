@@ -1,10 +1,13 @@
-const canvas = document.querySelector('#background') as HTMLCanvasElement;
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+import { Board } from "./classes/Board.js";
+import { Square } from "./classes/Square.js";
 
-const resizeCanvas = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+const canvas = document.querySelector('#background') as HTMLCanvasElement;
+const background = new Board(canvas)
+
+const resizeBackground = () => {
+    background.canvas.width = window.innerWidth;
+    background.canvas.height = window.innerHeight;
 }
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+window.addEventListener('resize', resizeBackground);
+resizeBackground();

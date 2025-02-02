@@ -5,7 +5,7 @@ export class Square {
     color: string;
     colors: string[] = ['#a749eb', '#9e2fed', '#691da1', '#6006a1'];
 
-    constructor(x: number, y: number, size: number, color: string) {
+    constructor(x: number, y: number, size: number) {
         this.x = x;
         this.y = y;
         this.size = size;

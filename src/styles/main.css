@@ -10,4 +10,5 @@ body {
 
 #background {
     background-color: rgb(39, 39, 39);
+    display: block;
 }
