@@ -29,8 +29,8 @@ body {
 }
 
 .star {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     animation: glow 1.5s infinite alternate;
     align-self: flex-end;
 }
