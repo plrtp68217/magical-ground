@@ -6,9 +6,42 @@
 
 body {
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #background {
     background-color: rgb(39, 39, 39);
     display: block;
 }
+
+.ballerina_star {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.ballerina {
+    width: 300px;
+    height: 600px;
+    animation: glow 1.5s infinite alternate;
+}
+
+.star {
+    width: 100px;
+    height: 100px;
+    animation: glow 1.5s infinite alternate;
+    align-self: flex-end;
+}
+
+@keyframes glow {
+    0% {
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)) 
+              drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    100% {
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1)) 
+              drop-shadow(0 0 30px rgba(255, 255, 255, 0.7));
+    }
+  }
