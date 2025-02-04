@@ -6,9 +6,6 @@
 
 body {
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #background {
@@ -16,23 +13,69 @@ body {
     display: block;
 }
 
-.ballerina_star {
+.logo_container {
+    height: 100vh;
+    width: 100%;
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle_ballerina_star {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle_img {
+    width: 400px;
+    height: 400px;
+    animation: 
+        glow 1.5s infinite alternate,
+        rotate 60s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); /* Начальное положение */
+    }
+    to {
+        transform: rotate(360deg); /* Конечное положение */
+    }
+}
+
+.ballerina_star {
+    position: absolute;
     display: flex;
     flex-direction: column;
 }
 
-.ballerina {
-    width: 300px;
-    height: 600px;
+.ballerina_img {
+    height: 300px;
     animation: glow 1.5s infinite alternate;
 }
 
-.star {
-    width: 80px;
-    height: 80px;
-    animation: glow 1.5s infinite alternate;
+.star_img {
+    width: 30px;
+    height: 30px;
     align-self: flex-end;
+    animation: 
+        glow 1.5s infinite alternate,
+        sway 2.5s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(-3deg); /* Наклон влево */
+    }
+    50% {
+        transform: rotate(3deg); /* Наклон вправо */
+    }
+    100% {
+        transform: rotate(-3deg); /* Возврат влево */
+    }
 }
 
 @keyframes glow {
