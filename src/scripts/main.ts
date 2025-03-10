@@ -9,7 +9,7 @@ let lastTime: number = 0;
 const frameInterval = 50;
 
 
-requestAnimationFrame(animateSquares);
+animateSquares(0);
 
 function animateSquares(timestamp: number) {
     if (!lastTime) {
